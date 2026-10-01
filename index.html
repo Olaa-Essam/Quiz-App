@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>QuizMaster</title>
+
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+ <link rel="stylesheet" href="./CSS/style.css" />
+</head>
+
+<body>
+
+
+  <header class="main-header">
+    <div class="logo-container">
+
+      <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        <span>QuizMaster</span>
+      </div>
+
+      <p class="tagline">
+        Test Your Knowledge
+      </p>
+
+    </div>
+  </header>
+
+
+
+  <main class="main-container">
+
+
+    <form
+      class="game-card quiz-setup"
+      id="quizOptions"
+    >
+
+
+      <div class="form-group">
+
+        <label for="playerName">
+          Player Name
+        </label>
+
+        <input
+          type="text"
+          id="playerName"
+          name="playerName"
+          placeholder="Enter your name"
+          autocomplete="off"
+        />
+
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label>
+          Select Arena
+        </label>
+
+        <div
+          class="custom-select"
+          id="categorySelect"
+        >
+
+          <div class="custom-select-trigger">
+
+            <span class="custom-select-text">
+              Random Category
+            </span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+          </div>
+
+
+          <div class="custom-select-options">
+
+            <div
+              class="custom-select-option selected"
+              data-value=""
+            >
+              Random Category
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="9"
+            >
+              General Knowledge
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="27"
+            >
+              Animals
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="19"
+            >
+              Mathematics
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="18"
+            >
+              Computers
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="22"
+            >
+              Geography
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="21"
+            >
+              Sports
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="23"
+            >
+              History
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="17"
+            >
+              Science & Nature
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="11"
+            >
+              Film
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="12"
+            >
+              Music
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="14"
+            >
+              Television
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="15"
+            >
+              Video Games
+            </div>
+
+          </div>
+
+        </div>
+
+        <input
+          type="hidden"
+          id="categoryMenu"
+          name="category"
+          value=""
+        />
+
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label>
+          Difficulty Level
+        </label>
+
+        <div
+          class="custom-select"
+          id="difficultySelect"
+        >
+
+          <div class="custom-select-trigger">
+
+            <span class="custom-select-text">
+              Easy Mode
+            </span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+          </div>
+
+
+          <div class="custom-select-options">
+
+            <div
+              class="custom-select-option selected"
+              data-value="easy"
+            >
+              Easy Mode
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="medium"
+            >
+              Medium Mode
+            </div>
+
+            <div
+              class="custom-select-option"
+              data-value="hard"
+            >
+              Hard Mode
+            </div>
+
+          </div>
+
+        </div>
+
+        <input
+          type="hidden"
+          id="difficultyOptions"
+          name="difficulty"
+          value="easy"
+        />
+
+      </div>
+
+
+
+      <div class="form-group">
+
+        <label for="questionsNumber">
+          Number of Rounds
+        </label>
+
+        <div class="number-input-wrapper">
+
+          <button
+            type="button"
+            class="number-btn"
+            data-action="decrement"
+            aria-label="Decrease number of rounds"
+          >
+            <i class="fa-solid fa-minus"></i>
+          </button>
+
+          <input
+            type="number"
+            id="questionsNumber"
+            name="questionsNumber"
+            value="10"
+            min="1"
+            max="50"
+            placeholder="Enter 1-50 rounds"
+          />
+
+          <button
+            type="button"
+            class="number-btn"
+            data-action="increment"
+            aria-label="Increase number of rounds"
+          >
+            <i class="fa-solid fa-plus"></i>
+          </button>
+
+        </div>
+
+        <p class="rounds-hint">
+          More rounds = More XP potential!
+        </p>
+
+      </div>
+
+
+
+      <button
+        type="submit"
+        class="btn-start"
+        id="startQuiz"
+      >
+        Start Game
+      </button>
+
+    </form>
+
+
+
+    <section
+      id="questionsContainer"
+      class="questions-container"
+    ></section>
+
+  </main>
+
+
+
+  <script src="./JS/ui-controls.js"></script>
+
+  <script
+    type="module"
+    src="./JS/index.js"
+  ></script>
+
+</body>
+</html>
